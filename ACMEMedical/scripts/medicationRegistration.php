@@ -10,13 +10,13 @@ echo '
             <legend>Medication Information</legend>
 
                 <label>Vest Use:</label>
-                <select name="vestUse" id="vestUse">
+                <select name="vest" id="vestUse">
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select><br>
 
                 <label>Acapella Inhaler Usage (Acapella DM or Acapella DH):</label>
-                <select name="acapellaUse" id="acapellaUse">
+                <select name="use" id="acapellaUse">
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select><br>
@@ -39,10 +39,16 @@ echo '
                     <option value="No">No</option>
                 </select><br>
 
+                <label>COLISTIN Inhalation Treatment:</label>
+                <select name="colistinUse" id="colistinUse">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br>
+
                 <label>Hypertonic Saline Usage:</label>
                 <select name="hsUse" id="hsUse">
-                    <option value="Yes 3%">Yes 3%</option>
-                    <option value="Yes 7%">Yes 7%</option>
+                    <option value="3%">3%</option>
+                    <option value="7%">7%</option>
                     <option value="no">No Hypertonic Saline Usage</option>
                 </select><br>
 
