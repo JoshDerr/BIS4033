@@ -66,6 +66,8 @@ CREATE TABLE medications (
 	medication_id INT AUTO_INCREMENT NOT NULL UNIQUE,
 	medication_name VARCHAR(100) NOT NULL,
 	medication_type VARCHAR(255) NOT NULL,
+	medication_dosage VARCHAR(255),
+	medication_quantity VARCHAR(255), 
 	PRIMARY KEY (medication_id)
 );
 
@@ -105,8 +107,10 @@ CREATE TABLE visits (
 );
 
 CREATE TABLE fev1s (
-	fev1 INT NOT NULL,
+	fev1_id INT AUTO_INCREMENT NOT NULL UNIQUE,
 	visit_id INT NOT NULL,
+	fev1_value VARCHAR(255) NOT NULL,
+	PRIMARY KEY (fev1_id),
 	CONSTRAINT fev1_FK1 FOREIGN KEY (visit_id) REFERENCES visits (visit_id)
 );
 
