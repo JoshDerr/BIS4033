@@ -181,6 +181,13 @@ body {
 .update form input[type="submit"]:hover {
   	background-color: #32a367;
 }
+.update form select { /* New addition to fix dropdown spacing */
+    padding: 10px;
+    width: 400px; 
+    margin-right: 25px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+}
 .delete .yesno {
   	display: flex;
 }

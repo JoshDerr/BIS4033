@@ -12,7 +12,7 @@ CREATE TABLE patients (
 	patient_id INT AUTO_INCREMENT NOT NULL UNIQUE,
 	patient_first_name VARCHAR(100) NOT NULL,
 	patient_last_name VARCHAR(100) NOT NULL,
-	gender CHAR(20) NOT NULL CHECK (gender IN ("Male", "Female", "Other; Prefer not to answer")),
+	gender CHAR(5) NOT NULL CHECK (gender IN ("Male", "Female", "Other")),
 	birthdate DATE NOT NULL,
 	genetics VARCHAR(255) NOT NULL,
 	diabetes CHAR(3) NOT NULL CHECK (diabetes IN ("Yes", "No")), 
