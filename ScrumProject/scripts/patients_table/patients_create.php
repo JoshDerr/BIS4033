@@ -50,7 +50,7 @@ if (!empty($_POST)) {
             <input type="text" name="genetics" placeholder="Enter genetic information here" id="genetics" required>
         <label for="diabetes">Diabetes</label>
             <select name = "diabetes" id = "diabetes" required>
-                <option value="" disabled selected hidden>Please select an option</option>
+                <option value="" disabled selected>Please select an option</option>
                 <option value = "Yes">Yes</option>
                 <option value = "No">No</option>
             </select>
