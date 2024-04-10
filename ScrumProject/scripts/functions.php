@@ -26,9 +26,9 @@ function template_header($title) {
     		      <h1>Patient Portal</h1>
                   <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/landingPage.php"><i class="fas fa-home"></i>Home</a>
     		      <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/patients_table/patients_read.php"><i class="fas fa-address-book"></i>Patients</a>
-				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/prescriptions_table/prescriptions_read.php"><i class="fas fa-address-book"></i>Prescriptions</a>
-				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/visits_table/visits_read.php"><i class="fas fa-address-book"></i>Visits</a>
-				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/fev1s_table/fev1s_read.php"><i class="fas fa-address-book"></i>FEV1s</a>
+				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/prescriptions_table/prescriptions_read.php"><i class="fas fa-medkit"></i>Prescriptions</a>
+				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/visits_table/visits_read.php"><i class="fas fa-microscope"></i>Visits</a>
+				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/fev1s_table/fev1s_read.php"><i class="fas fa-file-medical-alt"></i>FEV1s</a>
 				</div>
             </nav>
 ';
