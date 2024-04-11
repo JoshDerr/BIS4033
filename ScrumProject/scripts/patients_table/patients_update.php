@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
         $other_conditions = isset($_POST['other_conditions']) ? $_POST['other_conditions'] : '';
         // Update the patient record
         $stmt = $pdo->prepare('UPDATE contacts SET id = ?, name = ?, email = ?, phone = ?, title = ?, created = ? WHERE id = ?');
-        $stmt->execute([$id, $name, $email, $phone, $title, $created, $_GET['id']]);
+        $stmt->execute([$id, $patient_first_name, $patient_last_name, $gender, $birthdate, $genetics, $diabetes, $other_conditions $_GET['id']]);
         $msg = 'Updated Successfully!';
     }
     // Get the patient from the patients table
