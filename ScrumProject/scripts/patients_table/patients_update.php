@@ -63,7 +63,7 @@ if (isset($_GET['id'])) {
             <!-- <input type="text" name="diabetes" placeholder="Yes or No" id="diabetes" pattern="^(?:Yes|No|yes|no)$" required> -->
         <label for="other_conditions">Other Conditions</label>
             <input type="text" name="other_conditions" placeholder="List other conditions here" id="other_conditions" required>
-        <input type="submit" value="Update">
+        <input type="submit" value="Update Patient Information">
     </form>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
