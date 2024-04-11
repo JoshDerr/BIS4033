@@ -3,49 +3,66 @@
 @include_once (APP_ROOT.APP_FOLDER_NAME . '/scripts/functions.php');
 $pdo = pdo_connect_mysql();
 $msg = '';
-// Check if the contact id exists, for example //update.php?id=1 will get the contact with the id //of 1
+// Check if the patient id exists, for example //update.php?id=1 will get the contact with the id //of 1
 if (isset($_GET['id'])) {
     if (!empty($_POST)) {
         // This part is similar to the create.php, //but instead we update a record and not //insert
-        $id = isset($_POST['id']) ? $_POST['id'] : NULL;
-        $name = isset($_POST['name']) ? $_POST['name'] : '';
-        $email = isset($_POST['email']) ? $_POST['email'] : '';
-        $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
-        $title = isset($_POST['title']) ? $_POST['title'] : '';
-        $created = isset($_POST['created']) ? $_POST['created'] : date('Y-m-d H:i:s');
-        // Update the record
+        $id = isset($_POST['patient_id']) ? $_POST['patient_id'] : NULL;
+        $patient_first_name = isset($_POST['patient_first_name']) ? $_POST['patient_first_name'] : '';
+        $patient_last_name = isset($_POST['patient_last_name']) ? $_POST['patient_last_name'] : '';
+        $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
+        $birthdate = isset($_POST['birthdate']) ? $_POST['birthdate'] : '';
+        $genetics = isset($_POST['genetics']) ? $_POST['genetics'] : '';
+        $diabetes = isset($_POST['diabetes']) ? $_POST['diabetes'] : '';
+        $other_conditions = isset($_POST['other_conditions']) ? $_POST['other_conditions'] : '';
+        // Update the patient record
         $stmt = $pdo->prepare('UPDATE contacts SET id = ?, name = ?, email = ?, phone = ?, title = ?, created = ? WHERE id = ?');
         $stmt->execute([$id, $name, $email, $phone, $title, $created, $_GET['id']]);
         $msg = 'Updated Successfully!';
     }
-    // Get the contact from the contacts table
-    $stmt = $pdo->prepare('SELECT * FROM contacts WHERE id = ?');
-    $stmt->execute([$_GET['id']]);
-    $contact = $stmt->fetch(PDO::FETCH_ASSOC);
-    if (!$contact) {
-        exit('Contact doesn\'t exist with that ID!');
+    // Get the patient from the patients table
+    $stmt = $pdo->prepare('SELECT * FROM patients WHERE id = ?');
+    $stmt->execute([$_GET['patient_id']]);
+    $patient = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!$patient) {
+        exit('Patient doesn\'t exist with that ID!');
     }
 } else {
-    exit('No ID specified!');
+    exit('No Patient ID specified!');
 }
 ?>
 <?=template_header('Read')?>
 
 <div class="content update">
-	<h2>Update Contact #<?=$contact['id']?></h2>
-    <form action="contacts_update.php?id=<?=$contact['id']?>" method="post">
-        <label for="id">ID</label>
-        <label for="name">Name</label>
-        <input type="text" name="id" placeholder="1" value="<?=$contact['id']?>" id="id">
-        <input type="text" name="name" placeholder="John Doe" value="<?=$contact['name']?>" id="name">
-        <label for="email">Email</label>
-        <label for="phone">Phone</label>
-        <input type="text" name="email" placeholder="johndoe@example.com" value="<?=$contact['email']?>" id="email">
-        <input type="text" name="phone" placeholder="2025550143" value="<?=$contact['phone']?>" id="phone">
-        <label for="title">Title</label>
-        <label for="created">Created</label>
-        <input type="text" name="title" placeholder="Employee" value="<?=$contact['title']?>" id="title">
-        <input type="datetime-local" name="created" value="<?=date('Y-m-d\TH:i', strtotime($contact['created']))?>" id="created">
+    <h2>Update Patient</h2>
+    <form action="patients_update.php" method="post">
+        <label for="patient_id">Patient ID</label>
+            <input type="text" name="patient_id" placeholder="26" value="auto" id="patient_id" required>
+        <label for="patient_first_name">First Name</label>
+            <input type="text" name="patient_first_name" placeholder="John" id="patient_first_name" pattern = "[A-Za-z]{2,}" required>
+        <label for="patient_last_name">Last Name</label>
+            <input type="text" name="patient_last_name" placeholder="Doe" id="patient_last_name" pattern = "[A-Za-z]{2,}" required>
+        <label for="gender">Gender</label>
+            <select name = "gender" id = "gender" required>
+                <option value="" disabled selected>Please select an option</option>
+                <option value = "Male">Male</option>
+                <option value = "Female">Female</option>
+                <option value = "Other">Other</option>
+            </select>
+            <!-- <input type="text" name="gender" placeholder="Male, Female, or Other" id="gender" pattern="^(?:Male|Female|Other)$" required> -->
+        <label for="birthdate">Birthdate</label>
+            <input type="date" name="birthdate" id="birthdate" max="2024-04-23" required>
+        <label for="genetics">Genetics</label>
+            <input type="text" name="genetics" placeholder="Enter genetic information here" id="genetics" required>
+        <label for="diabetes">Diabetes</label>
+            <select name = "diabetes" id = "diabetes" required>
+                <option value="" disabled selected>Please select an option</option>
+                <option value = "Yes">Yes</option>
+                <option value = "No">No</option>
+            </select>
+            <!-- <input type="text" name="diabetes" placeholder="Yes or No" id="diabetes" pattern="^(?:Yes|No|yes|no)$" required> -->
+        <label for="other_conditions">Other Conditions</label>
+            <input type="text" name="other_conditions" placeholder="List other conditions here" id="other_conditions" required>
         <input type="submit" value="Update">
     </form>
     <?php if ($msg): ?>
