@@ -36,7 +36,7 @@ if (!empty($_POST)) {
         <label for="patient_first_name">First Name</label>
             <input type="text" name="patient_first_name" placeholder="Ex. John" id="patient_first_name" pattern = "[A-Za-z']{2,}" required>
         <label for="patient_last_name">Last Name</label>
-            <input type="text" name="patient_last_name" placeholder="Ex. Doe" id="patient_last_name" pattern = "[A-Za-z'\s]{2,}" required>
+            <input type="text" name="patient_last_name" placeholder="Ex. Doe" id="patient_last_name" pattern = "[A-Za-z'\-\s]{2,}" required>
         <label for="gender">Gender</label>
             <select name = "gender" id = "gender" required>
                 <option value="" disabled selected>Please select an option</option>

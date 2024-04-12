@@ -43,7 +43,7 @@ if (isset($_GET['patient_id'])) {
         <label for="patient_first_name">First Name</label>
             <input type="text" name="patient_first_name" placeholder="Ex. John" value="<?=$patient['patient_first_name']?>" id="patient_first_name" pattern = "[A-Za-z']{2,}" required>
         <label for="patient_last_name">Last Name</label>
-            <input type="text" name="patient_last_name" placeholder="Ex. Doe" value="<?=$patient['patient_last_name']?>" id="patient_last_name" pattern = "[A-Za-z'\s]{2,}" required>
+            <input type="text" name="patient_last_name" placeholder="Ex. Doe" value="<?=$patient['patient_last_name']?>" id="patient_last_name" pattern = "[A-Za-z'\-\s]{2,}" required>
         <label for="gender">Gender</label>
             <select name = "gender" value="<?=$patient['gender']?>" id = "gender" required>
                 <option value='<?php echo $patient['gender']?>' hidden selected><?php echo $patient['gender']?></option>

@@ -32,9 +32,9 @@ if (!empty($_POST)) {
         <label for="medication_id">ID</label>
             <input type="text" name="medication_id" placeholder="Ex. 26" value="auto" id="medication_id" readonly required>
         <label for="medication_name">Name</label>
-            <input type="text" name="medication_name" placeholder="Ex. Bactrim" id="medication_name" pattern = "[A-Za-z'\s]{2,}" required>
+            <input type="text" name="medication_name" placeholder="Ex. Bactrim" id="medication_name" pattern = "[A-Za-z'\-\s]{2,}" required>
         <label for="medication_type">Type</label>
-            <input type="text" name="medication_type" placeholder="Ex. Antibiotic" id="medication_type" pattern = "[A-Za-z'\s]{2,}">
+            <input type="text" name="medication_type" placeholder="Ex. Antibiotic" id="medication_type" pattern = "[A-Za-z'\-\s]{2,}">
         <label for="medication_dosage">Dosage (mg)</label>
             <input type="number" name="medication_dosage" placeholder="Ex. 50" id="medication_dosage" min="1" pattern=" 0+\.[0-9]*[1-9][0-9]*$" required>
         <label for="medication_quantity">Quantity</label>

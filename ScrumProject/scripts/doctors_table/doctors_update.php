@@ -38,9 +38,9 @@ if (isset($_GET['doctor_id'])) {
         <label for="doctor_first_name"> First Name</label>
             <input type="text" name="doctor_first_name" placeholder="Ex. John" value="<?=$doctor['doctor_first_name']?>" id="doctor_first_name" pattern = "[A-Za-z']{2,}" required>
         <label for="doctor_last_name">Last Name</label>
-            <input type="text" name="doctor_last_name" placeholder="Ex. Doe" value="<?=$doctor['doctor_last_name']?>" id="doctor_last_name" pattern = "[A-Za-z'\s]{2,}" required>
+            <input type="text" name="doctor_last_name" placeholder="Ex. Doe" value="<?=$doctor['doctor_last_name']?>" id="doctor_last_name" pattern = "[A-Za-z'\-\s]{2,}" required>
         <label for="doctor_specialty">Specialty</label>
-            <input type="text" name="doctor_specialty" placeholder="Ex. Neurology" value="<?=$doctor['doctor_specialty']?>" id="doctor_specialty" pattern = "[A-Za-z'\s]{2,}" required>
+            <input type="text" name="doctor_specialty" placeholder="Ex. Neurology" value="<?=$doctor['doctor_specialty']?>" id="doctor_specialty" pattern = "[A-Za-z'\-\s]{2,}" required>
         <input type="submit" value="Update">
     </form>
     <?php if ($msg): ?>

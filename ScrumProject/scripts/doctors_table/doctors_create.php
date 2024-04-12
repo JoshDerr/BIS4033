@@ -32,9 +32,9 @@ if (!empty($_POST)) {
         <label for="doctor_first_name">First Name</label>
             <input type="text" name="doctor_first_name" placeholder="Ex. John" id="doctor_first_name" pattern = "[A-Za-z']{2,}" required>
         <label for="doctor_last_name">Last Name</label>
-            <input type="text" name="doctor_last_name" placeholder="Ex. Doe" id="doctor_last_name" pattern = "[A-Za-z'\s]{2,}" required>
+            <input type="text" name="doctor_last_name" placeholder="Ex. Doe" id="doctor_last_name" pattern = "[A-Za-z'\-\s]{2,}" required>
         <label for="doctor_specialty">Specialty</label>
-            <input type="text" name="doctor_specialty" placeholder="Ex. Neurology" id="doctor_specialty" pattern = "[A-Za-z'\s]{2,}" required>
+            <input type="text" name="doctor_specialty" placeholder="Ex. Neurology" id="doctor_specialty" pattern = "[A-Za-z'\-\s]{2,}" required>
         <input type="submit" value="Create">
     </form>
     <?php if ($msg): ?>
