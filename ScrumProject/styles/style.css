@@ -203,4 +203,21 @@ body {
 .delete .yesno a:hover {
   	background-color: #32a367;
 }
+.back {
+	display: block;
+	background-color: #38b673;
+	border: 0;
+	font-weight: bold;
+	font-size: 14px;
+	color: #FFFFFF;
+	cursor: pointer;
+	width: 75px;
+  	margin-top: 15px;
+	text-align: center;
+	padding: 10px;
+	text-decoration: none;
+}
+.back:hover {
+	background-color: #32a367;
+}
 
