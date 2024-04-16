@@ -31,7 +31,7 @@ if (!empty($_POST)) {
 <div class="content update">
     <h2>Create Patient</h2>
     <form action="patients_create.php" method="post">
-        <label for="patient_id">ID</label>
+        <label for="patient_id">Patient ID</label>
             <input type="text" name="patient_id" placeholder="Ex. 26" value="auto" id="patient_id" readonly required>
         <label for="patient_first_name">First Name</label>
             <input type="text" name="patient_first_name" placeholder="Ex. John" id="patient_first_name" pattern = "[A-Za-z']{2,}" required>

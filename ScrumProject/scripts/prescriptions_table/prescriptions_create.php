@@ -28,7 +28,7 @@ if (!empty($_POST)) {
 	<h2>Create Prescription</h2>
     <form action="prescriptions_create.php" method="post">
         <label for="prescription_id">Prescription ID</label>
-            <input type="text" name="prescription_id" placeholder="Ex. 26" value="auto" id="prescription_id">
+            <input type="text" name="prescription_id" placeholder="Ex. 26" value="auto" id="prescription_id" required readonly>
         <label for="prescription_lot_num">Lot Number</label>
             <input type="text" name="prescription_lot_num" placeholder="Ex. AD4ZBT1" id="prescription_lot_num" required>
         <label for="prescription_expiration_date">Expiration Date</label>

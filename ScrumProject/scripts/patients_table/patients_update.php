@@ -38,7 +38,7 @@ if (isset($_GET['patient_id'])) {
 <div class="content update">
 	<h2>Update Patient #<?=$patient['patient_id']?></h2>
     <form action="patients_update.php?patient_id=<?=$patient['patient_id']?>" method="post">
-        <label for="patient_id">ID</label>
+        <label for="patient_id">Patient ID</label>
             <input type="text" name="patient_id" placeholder="Ex. 1" value="<?=$patient['patient_id']?>" id="patient_id" readonly required>
         <label for="patient_first_name">First Name</label>
             <input type="text" name="patient_first_name" placeholder="Ex. John" value="<?=$patient['patient_first_name']?>" id="patient_first_name" pattern = "[A-Za-z']{2,}" required>

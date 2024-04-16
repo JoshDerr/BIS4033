@@ -33,7 +33,7 @@ if (isset($_GET['doctor_id'])) {
 <div class="content update">
 	<h2>Update Doctor #<?=$doctor['doctor_id']?></h2>
     <form action="doctors_update.php?doctor_id=<?=$doctor['doctor_id']?>" method="post">
-        <label for="doctor_id">ID</label>
+        <label for="doctor_id">Doctor ID</label>
             <input type="text" name="doctor_id" placeholder="Ex. 1" value="<?=$doctor['doctor_id']?>" id="doctor_id" readonly required>
         <label for="doctor_first_name"> First Name</label>
             <input type="text" name="doctor_first_name" placeholder="Ex. John" value="<?=$doctor['doctor_first_name']?>" id="doctor_first_name" pattern = "[A-Za-z']{2,}" required>

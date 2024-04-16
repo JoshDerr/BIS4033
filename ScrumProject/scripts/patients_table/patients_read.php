@@ -25,7 +25,7 @@ $num_patients = $pdo->query('SELECT COUNT(*) FROM patients')->fetchColumn();
 	<table>
         <thead>
             <tr>
-                <td>ID</td>
+                <td>Patient ID</td>
                 <td>First Name</td>
                 <td>Last Name</td>
                 <td>Gender</td>

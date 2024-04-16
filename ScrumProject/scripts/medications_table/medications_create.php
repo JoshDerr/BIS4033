@@ -29,14 +29,14 @@ if (!empty($_POST)) {
 <div class="content update">
     <h2>Create Medication</h2>
     <form action="medications_create.php" method="post">
-        <label for="medication_id">ID</label>
+        <label for="medication_id">Medication ID</label>
             <input type="text" name="medication_id" placeholder="Ex. 26" value="auto" id="medication_id" readonly required>
         <label for="medication_name">Name</label>
             <input type="text" name="medication_name" placeholder="Ex. Bactrim" id="medication_name" pattern = "[A-Za-z'\-\s]{2,}" required>
         <label for="medication_type">Type</label>
             <input type="text" name="medication_type" placeholder="Ex. Antibiotic" id="medication_type" pattern = "[A-Za-z'\-\s]{2,}">
-        <label for="medication_dosage">Dosage (mg)</label>
-            <input type="number" name="medication_dosage" placeholder="Ex. 50" id="medication_dosage" min="1" pattern=" 0+\.[0-9]*[1-9][0-9]*$" required>
+        <label for="medication_dosage">Dosage</label>
+            <input type="text" name="medication_dosage" placeholder="Ex. 50mg" id="medication_dosage" required>
         <label for="medication_quantity">Quantity</label>
             <input type="number" name="medication_quantity" placeholder="Ex. 14" id="medication_quantity" min="1" pattern=" 0+\.[0-9]*[1-9][0-9]*$" required>
         <label for="medication_frequency">Frequency</label>

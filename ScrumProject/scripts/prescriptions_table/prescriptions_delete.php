@@ -3,7 +3,7 @@
 @include_once (APP_ROOT.APP_FOLDER_NAME . '/scripts/functions.php');
 $pdo = pdo_connect_mysql();
 $msg = '';
-// Check that the patient ID exists
+// Check that the contact ID exists
 if (isset($_GET['prescription_id'])) {
     // Select the record that is going to be deleted
     $stmt = $pdo->prepare('SELECT * FROM prescriptions WHERE prescription_id = ?');
@@ -32,11 +32,11 @@ if (isset($_GET['prescription_id'])) {
 <?=template_header('Delete')?>
 
 <div class="content delete">
-    <h2>Delete Prescription #<?=$prescription['prescription_id']?></h2>
+	<h2>Delete Prescription #<?=$prescription['prescription_id']?></h2>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
     <?php else: ?>
-    <p>Are you sure you want to delete prescription #<?=$prescription['prescription_id']?>?</p>
+	<p>Are you sure you want to delete prescription #<?=$prescription['prescription_id']?>?</p>
     <div class="yesno">
         <a href="prescriptions_delete.php?prescription_id=<?=$prescription['prescription_id']?>&confirm=yes">Yes</a>
         <a href="prescriptions_delete.php?prescription_id=<?=$prescription['prescription_id']?>&confirm=no">No</a>

@@ -25,7 +25,7 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
 	<table>
         <thead>
             <tr>
-                <td>ID</td>
+                <td>Medication ID</td>
                 <td>Name</td>
                 <td>Type</td>
                 <td>Dosage</td>
