@@ -61,14 +61,14 @@ if (isset($_GET['prescription_id'])) {
         ?>
 
         <label for="patient_id">Patient ID / Name</label>
-            <select name="patient_id" id="patient_id" required>
+            <select name="patient_id" id="patient_id" value="<?$prescription['patient_id']?> required>
                 <option value="" disabled selected>Please select an option</option>
                 <?php foreach($patients as $patient) : ?>
                     <option value="<?php echo $patient['patient_id']; ?>"><?php echo $patient['patient_id'] . ' - ' . $patient['patient_first_name'] . ' ' . $patient['patient_last_name']  ; ?></option>
                 <?php endforeach; ?>
             </select>
 
-        <input type="submit" value="Create">
+        <input type="submit" value="Update">
     </form>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
