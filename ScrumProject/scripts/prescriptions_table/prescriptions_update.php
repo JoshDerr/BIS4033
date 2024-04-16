@@ -33,14 +33,14 @@ if (isset($_GET['prescription_id'])) {
 <?=template_header('Read')?>
 
 <div class="content update">
-	<h2>Update Prescription Record</h2>
-    <form action="prescriptions_create.php" method="post">
+	<h2>Update Prescription</h2>
+    <form action="prescriptions_update.php?prescription_id=<?=$prescription['prescription_id']?>" method="post">
         <label for="prescription_id">Prescription ID</label>
-            <input type="text" name="prescription_id" placeholder="Ex. 26" value="auto" id="prescription_id">
+            <input type="text" name="prescription_id" placeholder="Ex. 26" value="<?$prescription['prescription_id']?>" id="prescription_id" readonly required>
         <label for="prescription_lot_num">Lot Number</label>
-            <input type="text" name="prescription_lot_num" placeholder="Ex. AD4ZBT1" id="prescription_lot_num" required>
+            <input type="text" name="prescription_lot_num" placeholder="Ex. AD4ZBT1" value="<?$prescription['prescription_lot_mun']?> id="prescription_lot_num" required>
         <label for="prescription_expiration_date">Expiration Date</label>
-            <input type="date" name="prescription_expiration_date" id="prescription_expiration_date" required>
+            <input type="date" name="prescription_expiration_date" value="<?$prescription['prescription_exp_date']?> id="prescription_exp_date" required>
         
         <?php
         $stmt = $pdo->query("SELECT medication_id, medication_name FROM medications ORDER BY medication_id");
