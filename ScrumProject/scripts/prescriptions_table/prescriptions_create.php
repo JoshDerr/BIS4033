@@ -10,14 +10,11 @@ if (!empty($_POST)) {
     $prescription_id = isset($_POST['prescription_id']) && !empty($_POST['prescription_id']) && $_POST['prescription_id'] != 'auto' ? $_POST['prescription_id'] : NULL;
     /*Check if POST variable //"prescription_id" exists, if not default //the value to blank, basically the same for //all variables*/
     $medication_id = isset($_POST['medication_id']) ? $_POST['medication_id'] : '';
-    $patient_id = isset($_POST['patient_id']) ? $_POST['patient_id'] : '';
-    //$patient_first_name = isset($_POST['patient_first_name']) ? $_POST['patient_first_name'] : '';
-    //$patient_last_name = isset($_POST['patient_last_name']) ? $_POST['patient_last_name'] : '';
     $prescription_lot_num = isset($_POST['prescription_lot_num']) ? $_POST['prescription_lot_num'] : '';
     $prescription_expiration_date = isset($_POST['prescription_expiration_date']) ? $_POST['prescription_expiration_date'] : '';
     // Insert new record into the prescriptions table
-    $stmt = $pdo->prepare('INSERT INTO prescriptions VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute([$prescription_id, $medication_id, $patient_id, $prescription_lot_num, $prescription_expiration_date]);
+    $stmt = $pdo->prepare('INSERT INTO prescriptions VALUES (?, ?, ?, ?)');
+    $stmt->execute([$prescription_id, $medication_id, $prescription_lot_num, $prescription_expiration_date]);
     // Output message
     $msg = 'Created Successfully!';
 }
@@ -47,19 +44,6 @@ if (!empty($_POST)) {
                 <?php endforeach; ?>
             </select>
  
-        <?php
-        $stmt = $pdo->query("SELECT patient_id, patient_first_name, patient_last_name FROM patients ORDER BY patient_id");
-        $patients = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        ?>
-
-        <label for="patient_id">Patient ID / Name</label>
-            <select name="patient_id" id="patient_id" required>
-                <option value="" disabled selected>Please select an option</option>
-                <?php foreach($patients as $patient) : ?>
-                    <option value="<?php echo $patient['patient_id']; ?>"><?php echo $patient['patient_id'] . ' - ' . $patient['patient_first_name'] . ' ' . $patient['patient_last_name']  ; ?></option>
-                <?php endforeach; ?>
-            </select>
-
         <input type="submit" value="Create">
     </form>
     <?php if ($msg): ?>

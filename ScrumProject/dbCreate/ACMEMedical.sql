@@ -78,15 +78,11 @@ INSERT INTO medications (medication_name, medication_type, medication_dosage, me
 CREATE TABLE prescriptions (
 	prescription_id INT AUTO_INCREMENT NOT NULL UNIQUE,
 	medication_id INT NOT NULL,
-	patient_id INT NOT NULL,
 	prescription_lot_num VARCHAR(100) NOT NULL,
 	prescription_expiration_date DATE NOT NULL,
 	PRIMARY KEY (prescription_id),
-	CONSTRAINT prescription_FK1 FOREIGN KEY (medication_id) REFERENCES medications (medication_id),
-	CONSTRAINT prescription_FK2 FOREIGN KEY (patient_id) REFERENCES patients (patient_id)
+	CONSTRAINT prescription_FK1 FOREIGN KEY (medication_id) REFERENCES medications (medication_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-/* SELECT * FROM medications AS M, prescriptions AS Pr, patients AS Pa WHERE M.medication_id = Pr.medication_id AND Pa.patient_id = Pr.patient_id ORDER BY Pr.patient_id; */
 
 CREATE TABLE visits (
 	visit_id INT AUTO_INCREMENT NOT NULL UNIQUE,
