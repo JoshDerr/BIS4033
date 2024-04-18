@@ -3,7 +3,7 @@
 @include_once (APP_ROOT.APP_FOLDER_NAME . '/scripts/functions.php');
 $pdo = pdo_connect_mysql();
 $msg = '';
-// Check that the contact ID exists
+// Check that the visit ID exists
 if (isset($_GET['visit_id'])) {
     // Select the record that is going to be deleted
     $stmt = $pdo->prepare('SELECT * FROM visits WHERE visit_id = ?');
@@ -32,7 +32,7 @@ if (isset($_GET['visit_id'])) {
 <?=template_header('Delete')?>
 
 <div class="content delete">
-	<h2>Delete visit #<?=$visit['visit_id']?></h2>
+	<h2>Delete Visit #<?=$visit['visit_id']?></h2>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
     <?php else: ?>

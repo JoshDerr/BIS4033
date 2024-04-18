@@ -58,7 +58,7 @@ CREATE TABLE medications (
 	medication_type VARCHAR(255),
 	medication_dosage VARCHAR(255) NOT NULL,
 	medication_quantity INT NOT NULL,
-	medication_frequency CHAR(3) CHECK (medication_frequency IN ("QD", "BID", "TID", "QHS")), 
+	medication_frequency CHAR(3) CHECK (medication_frequency IN ("QD", "BID", "TID", "QHS", "N/A")), 
 	PRIMARY KEY (medication_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -75,25 +75,25 @@ INSERT INTO medications (medication_name, medication_type, medication_dosage, me
 	("Inhaled Gentamicin", "Antibiotic", "80mg", 30, "BID"),
 	("Enzymes", "Digestive Aid", "N/A", 90, NULL);
 
-CREATE TABLE prescriptions (
-	prescription_id INT AUTO_INCREMENT NOT NULL UNIQUE,
-	medication_id INT NOT NULL,
-	prescription_lot_num VARCHAR(100) NOT NULL,
-	prescription_expiration_date DATE NOT NULL,
-	PRIMARY KEY (prescription_id),
-	CONSTRAINT prescription_FK1 FOREIGN KEY (medication_id) REFERENCES medications (medication_id)
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
 CREATE TABLE visits (
 	visit_id INT AUTO_INCREMENT NOT NULL UNIQUE,
 	doctor_id INT NOT NULL,
 	patient_id INT NOT NULL,
-	prescription_id INT NOT NULL,
 	date_of_visit DATE NOT NULL,
 	PRIMARY KEY (visit_id),
 	CONSTRAINT visit_FK1 FOREIGN KEY (doctor_id) REFERENCES doctors (doctor_id),
-	CONSTRAINT visit_FK2 FOREIGN KEY (patient_id) REFERENCES patients (patient_id),
-	CONSTRAINT visit_FK3 FOREIGN KEY (prescription_id) REFERENCES prescriptions (prescription_id)
+	CONSTRAINT visit_FK2 FOREIGN KEY (patient_id) REFERENCES patients (patient_id)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE prescriptions (
+	prescription_id INT AUTO_INCREMENT NOT NULL UNIQUE,
+	medication_id INT NOT NULL,
+	visit_id INT NOT NULL,
+	prescription_lot_num VARCHAR(100) NOT NULL,
+	prescription_expiration_date DATE NOT NULL,
+	PRIMARY KEY (prescription_id),
+	CONSTRAINT prescription_FK1 FOREIGN KEY (medication_id) REFERENCES medications (medication_id),
+	CONSTRAINT prescription_FK2 FOREIGN KEY (visit_id) REFERENCES visits (visit_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE fev1s (

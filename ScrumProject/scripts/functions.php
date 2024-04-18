@@ -28,8 +28,8 @@ function template_header($title) {
     		      <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/patients_table/patients_read.php"><i class="fas fa-user-injured"></i>Patients</a>
 				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/doctors_table/doctors_read.php"><i class="fas fa-user-md"></i>Doctors</a>
 				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/medications_table/medications_read.php"><i class="fas fa-tablets"></i>Medications</a>
+				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/visits_table/visits_read.php"><i class="fas fa-microscope"></i>Visits</a> 
 				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/prescriptions_table/prescriptions_read.php"><i class="fas fa-medkit"></i>Prescriptions</a>
-				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/visits_table/visits_read.php"><i class="fas fa-microscope"></i>Visits</a>
 				  <a href="'.WEB_ROOT.APP_FOLDER_NAME.'/scripts/fev1s_table/fev1s_read.php"><i class="fas fa-file-medical-alt"></i>FEV1s</a>
 				</div>
             </nav>

@@ -11,11 +11,10 @@ if (!empty($_POST)) {
     /*Check if POST variable //"visit_id" exists, if not default //the value to blank, basically the same for //all variables*/
     $doctor_id = isset($_POST['doctor_id']) ? $_POST['doctor_id'] : '';
     $patient_id = isset($_POST['patient_id']) ? $_POST['patient_id'] : '';
-    $prescription_id = isset($_POST['prescription_id']) ? $_POST['prescription_id'] : '';
     $date_of_visit = isset($_POST['date_of_visit']) ? $_POST['date_of_visit'] : '';
     // Insert new record into the visits table
-    $stmt = $pdo->prepare('INSERT INTO visits VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute([$visit_id, $doctor_id, $patient_id, $prescription_id, $date_of_visit]);
+    $stmt = $pdo->prepare('INSERT INTO visits VALUES (?, ?, ?, ?)');
+    $stmt->execute([$visit_id, $doctor_id, $patient_id, $date_of_visit]);
     // Output message
     $msg = 'Created Successfully!';
 }
@@ -53,19 +52,6 @@ if (!empty($_POST)) {
                 <option value="" disabled selected>Please select an option</option>
                 <?php foreach($patients as $patient) : ?>
                     <option value="<?php echo $patient['patient_id']; ?>"><?php echo $patient['patient_id'] . ' - ' . $patient['patient_first_name'] . ' ' . $patient['patient_last_name']  ; ?></option>
-                <?php endforeach; ?>
-            </select>
-
-        <?php
-        $stmt = $pdo->query("SELECT prescription_id FROM prescriptions ORDER BY prescription_id");
-        $prescriptions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        ?>
-
-        <label for="prescription_id">Prescription ID</label>
-            <select name="prescription_id" id="prescription_id" required>
-                <option value="" disabled selected>Please select an option</option>
-                <?php foreach($prescriptions as $prescription) : ?>
-                    <option value="<?php echo $prescription['prescription_id']; ?>"><?php echo $prescription['prescription_id']  ; ?></option>
                 <?php endforeach; ?>
             </select>
 

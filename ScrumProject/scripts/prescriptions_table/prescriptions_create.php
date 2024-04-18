@@ -10,11 +10,12 @@ if (!empty($_POST)) {
     $prescription_id = isset($_POST['prescription_id']) && !empty($_POST['prescription_id']) && $_POST['prescription_id'] != 'auto' ? $_POST['prescription_id'] : NULL;
     /*Check if POST variable //"prescription_id" exists, if not default //the value to blank, basically the same for //all variables*/
     $medication_id = isset($_POST['medication_id']) ? $_POST['medication_id'] : '';
+    $visit_id = isset($_POST['visit_id']) ? $_POST['visit_id'] : '';
     $prescription_lot_num = isset($_POST['prescription_lot_num']) ? $_POST['prescription_lot_num'] : '';
     $prescription_expiration_date = isset($_POST['prescription_expiration_date']) ? $_POST['prescription_expiration_date'] : '';
     // Insert new record into the prescriptions table
-    $stmt = $pdo->prepare('INSERT INTO prescriptions VALUES (?, ?, ?, ?)');
-    $stmt->execute([$prescription_id, $medication_id, $prescription_lot_num, $prescription_expiration_date]);
+    $stmt = $pdo->prepare('INSERT INTO prescriptions VALUES (?, ?, ?, ?, ?)');
+    $stmt->execute([$prescription_id, $medication_id, $visit_id, $prescription_lot_num, $prescription_expiration_date]);
     // Output message
     $msg = 'Created Successfully!';
 }
@@ -32,18 +33,31 @@ if (!empty($_POST)) {
             <input type="date" name="prescription_expiration_date" id="prescription_expiration_date" required>
         
         <?php
-        $stmt = $pdo->query("SELECT medication_id, medication_name FROM medications ORDER BY medication_id");
+        $stmt = $pdo->query("SELECT medication_id, medication_name, medication_dosage FROM medications ORDER BY medication_id");
         $medications = $stmt->fetchAll(PDO::FETCH_ASSOC);
         ?>
         
-        <label for="medication_id">Medication ID / Name</label>
+        <label for="medication_id">Medication ID / Name / Dosage</label>
             <select name="medication_id" id="medication_id" required>
                 <option value="" disabled selected>Please select an option</option>
                 <?php foreach($medications as $medication) : ?>
-                    <option value="<?php echo $medication['medication_id']; ?>"><?php echo $medication['medication_id'] . ' - ' . $medication['medication_name']; ?></option>
+                    <option value="<?php echo $medication['medication_id']; ?>"><?php echo $medication['medication_id'] . ' - ' . $medication['medication_name'] . ' - ' . $medication['medication_dosage']; ?></option>
                 <?php endforeach; ?>
             </select>
  
+        <?php
+        $stmt = $pdo->query("SELECT V.visit_id, V.date_of_visit, D.doctor_first_name, D.doctor_last_name, Pa.patient_first_name, Pa.patient_last_name FROM visits AS V, doctors AS D, patients AS Pa WHERE V.doctor_id = D.doctor_id AND V.patient_id = Pa.patient_id ORDER BY visit_id");
+        $visits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        ?>
+        
+        <label for="visit_id">Visit ID / Doctor ID / Patient ID / Date of Visit</label>
+            <select name="visit_id" id="visit_id" required>
+                <option value="" disabled selected>Please select an option</option>
+                <?php foreach($visits as $visit) : ?>
+                    <option value="<?php echo $visit['visit_id']; ?>"><?php echo $visit['visit_id'] . ' - ' . $visit['doctor_first_name'] . ' ' . $visit['doctor_last_name'] . ' - ' . $visit['patient_first_name'] . ' ' . $visit['patient_last_name'] . ' - ' . $visit['date_of_visit']; ?></option>
+                <?php endforeach; ?>
+            </select>
+
         <input type="submit" value="Create">
     </form>
     <?php if ($msg): ?>

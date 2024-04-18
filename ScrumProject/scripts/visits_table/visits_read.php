@@ -8,7 +8,7 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] :
 // Number of records to show on each page
 $records_per_page = 5;
 // Prepare the SQL statement and get records from our visits table, LIMIT will determine the page
-$stmt = $pdo->prepare('SELECT * FROM visits AS V, doctors AS D, patients AS Pa, prescriptions AS Pr WHERE V.doctor_id = D.doctor_id AND V.patient_id = Pa.patient_id AND V.prescription_id = Pr.prescription_id ORDER BY V.visit_id LIMIT :current_page, :record_per_page');
+$stmt = $pdo->prepare('SELECT * FROM visits AS V, doctors AS D, patients AS Pa WHERE V.doctor_id = D.doctor_id AND V.patient_id = Pa.patient_id ORDER BY V.visit_id LIMIT :current_page, :record_per_page');
 $stmt->bindValue(':current_page', ($page-1)*$records_per_page, PDO::PARAM_INT);
 $stmt->bindValue(':record_per_page', $records_per_page, PDO::PARAM_INT);
 $stmt->execute();
@@ -31,7 +31,6 @@ $num_visits = $pdo->query('SELECT COUNT(*) FROM visits')->fetchColumn();
                 <td>Doctor Name</td>
                 <td>Patient ID</td>
                 <td>Patient Name</td>
-                <td>Prescription ID</td>
                 <td></td>
             </tr>
         </thead>
@@ -44,9 +43,8 @@ $num_visits = $pdo->query('SELECT COUNT(*) FROM visits')->fetchColumn();
                 <td><?=$visit['doctor_first_name'].' '.$visit['doctor_last_name']?></td>
                 <td><?=$visit['patient_id']?></td>
                 <td><?=$visit['patient_first_name'].' '.$visit['patient_last_name']?></td>
-                <td><?=$visit['prescription_id']?></td>
                 <td class="actions">
-                    <a href="visits_update.php?visit_id=<?=$visit['visit_id']?>&doctor_id=<?=$visit['doctor_id']?>&patient_id=<?=$visit['patient_id']?>&prescription_id=<?=$visit['prescription_id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                    <a href="visits_update.php?visit_id=<?=$visit['visit_id']?>&doctor_id=<?=$visit['doctor_id']?>&patient_id=<?=$visit['patient_id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                     <a href="visits_delete.php?visit_id=<?=$visit['visit_id']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
             </tr>

@@ -54,6 +54,7 @@ if (isset($_GET['medication_id'])) {
                 <option value = "BID">BID (Twice Daily)</option>
                 <option value = "TID">TID (Three Times Daily)</option>
                 <option value = "QHS">QHS (Once Every Night)</option>
+                <option value = "N/A">N/A</option>
             </select>
         <input type="submit" value="Update">
     </form>

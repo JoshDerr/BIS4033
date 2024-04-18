@@ -8,7 +8,7 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] :
 // Number of records to show on each page
 $records_per_page = 5;
 // Prepare the SQL statement and get records from our prescriptions table, LIMIT will determine the page
-$stmt = $pdo->prepare('SELECT * FROM medications AS M, prescriptions AS Pr WHERE M.medication_id = Pr.medication_id ORDER BY Pr.prescription_id LIMIT :current_page, :record_per_page');
+$stmt = $pdo->prepare('SELECT * FROM medications AS M, prescriptions AS Pr, visits AS V WHERE M.medication_id = Pr.medication_id AND V.visit_id = Pr.visit_id ORDER BY Pr.prescription_id LIMIT :current_page, :record_per_page');
 $stmt->bindValue(':current_page', ($page-1)*$records_per_page, PDO::PARAM_INT);
 $stmt->bindValue(':record_per_page', $records_per_page, PDO::PARAM_INT);
 $stmt->execute();
@@ -30,6 +30,8 @@ $num_prescriptions = $pdo->query('SELECT COUNT(*) FROM prescriptions')->fetchCol
                 <td>Expiration Date</td>
                 <td>Medication ID</td>
                 <td>Medication Name</td>
+                <td>Medication Dosage</td>
+                <td>Visit ID</td>
                 <td></td>
             </tr>
         </thead>
@@ -41,8 +43,10 @@ $num_prescriptions = $pdo->query('SELECT COUNT(*) FROM prescriptions')->fetchCol
                 <td><?=$prescription['prescription_expiration_date']?></td>
                 <td><?=$prescription['medication_id']?></td>
                 <td><?=$prescription['medication_name']?></td>
+                <td><?=$prescription['medication_dosage']?></td>
+                <td><?=$prescription['visit_id']?></td>
                 <td class="actions">
-                    <a href="prescriptions_update.php?prescription_id=<?=$prescription['prescription_id']?>&medication_id=<?=$prescription['medication_id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                    <a href="prescriptions_update.php?prescription_id=<?=$prescription['prescription_id']?>&medication_id=<?=$prescription['medication_id']?>&visit_id=<?=$prescription['visit_id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                     <a href="prescriptions_delete.php?prescription_id=<?=$prescription['prescription_id']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
             </tr>
