@@ -67,11 +67,11 @@ if (isset($_GET['visit_id'])) {
                 <option value="<?=$visit['patient_id']?>" hidden selected><?=$visit['patient_id']?></option>
                 <option value="" disabled>Please select an option</option>
                 <?php foreach($visits as $visit) : ?>
-                    <option value="<?php echo $visit['patient_id']; ?>"><?php echo $visit['patient_id'] . ' - ' . $visit['patient_first_name'] && $visit['patient_last_name']; ?></option>
+                    <option value="<?php echo $visit['patient_id']; ?>"><?php echo $visit['patient_id'] . ' - ' . $visit['patient_first_name'] . '' . ['patient_last_name']; ?></option>
                 <?php endforeach; ?>
             </select>
 
-            
+
 
             <input type="submit" value="Update this Visit">
     </form>
