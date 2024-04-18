@@ -85,6 +85,19 @@ CREATE TABLE visits (
 	CONSTRAINT visit_FK2 FOREIGN KEY (patient_id) REFERENCES patients (patient_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+INSERT INTO visits (doctor_id, patient_id, date_of_visit) VALUES
+	(3, 5, "2024-04-01"),
+	(7, 2, "2023-11-21"),
+	(1, 4, "2024-02-07"),
+	(6, 3, "2023-08-18"),
+	(8, 8, "2023-12-29"),
+	(2, 1, "2024-01-13"),
+	(9, 9, "2024-03-09"),
+	(4, 4, "2023-09-23"),
+	(5, 6, "2023-06-17"),
+	(10, 7, "2024-04-12"),
+	(6, 10, "2023-04-28");
+
 CREATE TABLE prescriptions (
 	prescription_id INT AUTO_INCREMENT NOT NULL UNIQUE,
 	medication_id INT NOT NULL,
@@ -95,6 +108,19 @@ CREATE TABLE prescriptions (
 	CONSTRAINT prescription_FK1 FOREIGN KEY (medication_id) REFERENCES medications (medication_id),
 	CONSTRAINT prescription_FK2 FOREIGN KEY (visit_id) REFERENCES visits (visit_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+INSERT INTO prescriptions (medication_id, visit_id, prescription_lot_num, prescription_expiration_date) VALUES
+	(6, 5, "RX2023M0415I", "2026-02-24"),
+	(9, 9, "RX2023M0415D", "2025-12-17"),
+	(2, 1, "RX2023M0415G", "2024-09-02"),
+	(3, 2, "RX2023M0415A", "2025-04-09"),
+	(1, 11, "RX2023M0415H", "2025-10-16"),
+	(8, 8, "RX2023M0415K", "2024-05-07"),
+	(10, 10, "RX2023M0415C", "2026-07-25"),
+	(7, 6, "RX2023M0415F", "2025-11-20"),
+	(9, 3, "RX2023M0415E", "2026-02-01"),
+	(11, 4, "RX2023M0415B", "2024-08-14"),
+	(4, 7, "RX2023M0415J", "2024-06-26");
 
 CREATE TABLE fev1s (
 	fev1_id INT AUTO_INCREMENT NOT NULL UNIQUE,
