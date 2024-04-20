@@ -33,13 +33,13 @@ if (!empty($_GET)) {
         
         <label for="visit_id">Visit ID / Doctor ID / Patient ID / Date of Visit</label>
             <select name="visit_id" id="visit_id" required>
-                <option value="<?=$fev1s['visit_id']?>" disabled selected>Please select an option</option>
+                <option value="<?=$visits['visit_id']?>" disabled selected>Please select an option</option>
                 <?php foreach($visits as $visit) : ?>
                     <option value="<?php echo $visit['visit_id']; ?>"><?php echo $visit['visit_id'] . ' - ' . $visit['doctor_first_name'] . ' ' . $visit['doctor_last_name'] . ' - ' . $visit['patient_first_name'] . ' ' . $visit['patient_last_name'] . ' - ' . $visit['date_of_visit']; ?></option>
                 <?php endforeach; ?>
             </select>
 
-        <input type="submit" value="Update the Record">
+        <input type="submit" value="Update">
     </form>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
