@@ -27,7 +27,8 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
             <tr>
                 <td>Medication ID</td>
                 <td>Name</td>
-                <td>Type</td>
+                <td>Enzyme Status</td>
+                <td>Enzyme Type</td>
                 <td>Dosage</td>
                 <td>Quantity</td>
                 <td>Frequency</td>
@@ -39,7 +40,8 @@ $num_medications = $pdo->query('SELECT COUNT(*) FROM medications')->fetchColumn(
             <tr>
                 <td><?=$medication['medication_id']?></td>
                 <td><?=$medication['medication_name']?></td>
-                <td><?=$medication['medication_type']?></td>
+                <td><?=$medication['medication_enzyme_status']?></td>
+                <td><?=$medication['medication_enzyme_type']?></td>
                 <td><?=$medication['medication_dosage']?></td>
                 <td><?=$medication['medication_quantity']?></td>
                 <td><?=$medication['medication_frequency']?></td>

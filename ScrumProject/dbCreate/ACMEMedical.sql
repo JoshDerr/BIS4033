@@ -55,25 +55,28 @@ INSERT INTO doctors (doctor_first_name, doctor_last_name, doctor_specialty) VALU
 CREATE TABLE medications (
 	medication_id INT AUTO_INCREMENT NOT NULL UNIQUE,
 	medication_name VARCHAR(100) NOT NULL,
-	medication_type VARCHAR(255),
+	medication_enzyme_status CHAR(3) NOT NULL CHECK (medication_enzyme_status IN ("Yes", "No")),	
+	medication_enzyme_type VARCHAR(255),
 	medication_dosage VARCHAR(255) NOT NULL,
 	medication_quantity INT NOT NULL,
 	medication_frequency CHAR(3) CHECK (medication_frequency IN ("QD", "BID", "TID", "QHS", "N/A")), 
 	PRIMARY KEY (medication_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-INSERT INTO medications (medication_name, medication_type, medication_dosage, medication_quantity, medication_frequency) VALUES
-	("Vest", "Therapeutic Device", "N/A", 1, NULL),  
-	("Acapella", "Respiratory Device", "N/A", 1, "BID"),
-	("Pulmozyme", "Enzyme Replacement", "2.5mg", 30, "QD"),
-	("Inhaled Tobi", "Antibiotic", "300mg", 56, "BID"),
-	("Inhaled Colistin", "Antibiotic", "1 million IU", 60, "BID"),
-	("Hypertonic Saline", "Solution", "3% solution", 30, "BID"),
-	("Hypertonic Saline", "Solution", "7% solution", 30, "BID"),
-	("Azithromycin", "Antibiotic", "250mg", 30, "QD"),
-	("Clarithromycin", "Antibiotic", "500mg", 14, "BID"),
-	("Inhaled Gentamicin", "Antibiotic", "80mg", 30, "BID"),
-	("Enzymes", "Digestive Aid", "N/A", 90, NULL);
+INSERT INTO medications (medication_name, medication_enzyme_status, medication_enzyme_type, medication_dosage, medication_quantity, medication_frequency) VALUES
+	("Vest", "No", "", "N/A", 1, "N/A"),  
+	("Acapella", "No", "", "N/A", 1, "BID"),
+	("Pulmozyme", "No", "", "2.5mg", 30, "QD"),
+	("Inhaled Tobi", "No", "", "300mg", 56, "BID"),
+	("Inhaled Colistin", "No", "", "1 million IU", 60, "BID"),
+	("Hypertonic Saline", "No", "", "3% solution", 30, "BID"),
+	("Hypertonic Saline", "No", "", "7% solution", 30, "BID"),
+	("Azithromycin", "No", "", "250mg", 30, "QD"),
+	("Clarithromycin", "No", "", "500mg", 14, "BID"),
+	("Inhaled Gentamicin", "No", "", "80mg", 30, "BID"),
+	("Pancrelipase", "Yes", "Digestive Enzyme", "50mg", 20, "BID"),
+	("Laronidase", "Yes", "Glycoside Hydrolase", "58mg", 15, "QD"),
+	("Pegademase", "Yes", "Adenosine Deaminase", "100mg", 30, "TID");
 
 CREATE TABLE visits (
 	visit_id INT AUTO_INCREMENT NOT NULL UNIQUE,
@@ -114,13 +117,12 @@ INSERT INTO prescriptions (medication_id, visit_id, prescription_lot_num, prescr
 	(9, 9, "RX2023M0415D", "2025-12-17"),
 	(2, 1, "RX2023M0415G", "2024-09-02"),
 	(3, 2, "RX2023M0415A", "2025-04-09"),
-	(1, 11, "RX2023M0415H", "2025-10-16"),
+	(1, 7, "RX2023M0415H", "2025-10-16"),
 	(8, 8, "RX2023M0415K", "2024-05-07"),
-	(10, 10, "RX2023M0415C", "2026-07-25"),
+	(4, 10, "RX2023M0415C", "2026-07-25"),
 	(7, 6, "RX2023M0415F", "2025-11-20"),
 	(9, 3, "RX2023M0415E", "2026-02-01"),
-	(11, 4, "RX2023M0415B", "2024-08-14"),
-	(4, 7, "RX2023M0415J", "2024-06-26");
+	(10, 4, "RX2023M0415B", "2024-08-14");
 
 CREATE TABLE fev1s (
 	fev1_id INT AUTO_INCREMENT NOT NULL UNIQUE,
@@ -129,5 +131,23 @@ CREATE TABLE fev1s (
 	PRIMARY KEY (fev1_id),
 	CONSTRAINT fev1_FK1 FOREIGN KEY (visit_id) REFERENCES visits (visit_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+INSERT INTO fev1s (visit_id, fev1_value) VALUES
+	(8, 99),
+	(1, 90),
+	(4, 82),
+	(9, 97),
+	(3, 95),
+	(2, 85),
+	(6, 98),
+	(11, 87),
+	(10, 84),
+	(7, 83),
+	(5, 88),
+	(3, 96),
+	(1, 93),
+	(4, 89),
+	(2, 81),
+	(7, 80);
 
 CREATE USER IF NOT EXISTS "kermit"@"localhost" IDENTIFIED BY "sesame";

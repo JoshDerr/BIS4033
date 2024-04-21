@@ -3,7 +3,7 @@
 @include_once (APP_ROOT.APP_FOLDER_NAME . '/scripts/functions.php');
 $pdo = pdo_connect_mysql();
 $msg = '';
-// Check that the contact ID exists
+// Check that the fev1 ID exists
 if (isset($_GET['fev1_id'])) {
     // Select the record that is going to be deleted
     $stmt = $pdo->prepare('SELECT * FROM fev1s WHERE fev1_id = ?');
