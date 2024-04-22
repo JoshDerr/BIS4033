@@ -49,7 +49,7 @@ if (isset($_GET['medication_id'])) {
                 <option value = "No">No</option>
             </select>
         <label for="medication_enzyme_type">Enzyme Type</label>
-            <input type="text" name="medication_enzyme_type" placeholder="Ex. Antibiotic" value="<?=$medication['medication_enzyme_type']?>" id="medication_enzyme_type" pattern = "[A-Za-z\-\s]{2,}">
+            <input type="text" name="medication_enzyme_type" placeholder="Ex. Oxidoreductases" value="<?=$medication['medication_enzyme_type']?>" id="medication_enzyme_type" pattern = "[A-Za-z\-\s]{2,}">
         <label for="medication_dosage">Dosage</label>
             <input type="text" name="medication_dosage" placeholder="Ex. 50mg" value="<?=$medication['medication_dosage']?>" id="medication_dosage" required>
         <label for="medication_quantity">Quantity</label>

@@ -41,7 +41,7 @@ if (!empty($_POST)) {
                 <option value = "No">No</option>
             </select>
         <label for="medication_enzyme_type">Enzyme Type</label>
-            <input type="text" name="medication_enzyme_type" placeholder="Ex. Antibiotic" id="medication_enzyme_type" pattern = "[A-Za-z'\-\s]{2,}">
+            <input type="text" name="medication_enzyme_type" placeholder="Ex. Oxidoreductases" id="medication_enzyme_type" pattern = "[A-Za-z'\-\s]{2,}">
         <label for="medication_dosage">Dosage</label>
             <input type="text" name="medication_dosage" placeholder="Ex. 50mg" id="medication_dosage" required>
         <label for="medication_quantity">Quantity</label>
