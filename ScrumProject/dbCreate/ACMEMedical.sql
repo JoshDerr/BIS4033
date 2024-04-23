@@ -1,6 +1,7 @@
 /*****************************************
- * Created by Josh Derr
  * Use to create the Scrum Project database
+ * User: kermit@localhost
+ * Password: sesame
 *****************************************/
 DROP DATABASE IF EXISTS ACMEMedical;
 

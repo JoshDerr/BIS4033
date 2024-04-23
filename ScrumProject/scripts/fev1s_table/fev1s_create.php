@@ -33,7 +33,7 @@ if (!empty($_POST)) {
         $visits = $stmt->fetchAll(PDO::FETCH_ASSOC);
         ?>
         
-        <label for="visit_id">Visit ID / Doctor ID / Patient ID / Date of Visit</label>
+        <label for="visit_id">Visit ID / Doctor Name / Patient Name / Date of Visit</label>
             <select name="visit_id" id="visit_id" required>
                 <option value="" disabled selected>Please select an option</option>
                 <?php foreach($visits as $visit) : ?>

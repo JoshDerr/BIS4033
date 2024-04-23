@@ -41,7 +41,7 @@ if (isset($_GET['fev1_id'])) {
         $visits = $stmt->fetchAll(PDO::FETCH_ASSOC);
         ?>
 
-        <label for="visit_id">Visit ID / Doctor ID / Patient ID / Date of Visit</label>
+        <label for="visit_id">Visit ID / Doctor Name / Patient Name / Date of Visit</label>
             <select name="visit_id" id="visit_id" required>
                 <option value="<?=$fev1['visit_id']?>" hidden selected><?=$fev1['visit_id']?></option>
                 <option value="" disabled>Please select an option</option>
